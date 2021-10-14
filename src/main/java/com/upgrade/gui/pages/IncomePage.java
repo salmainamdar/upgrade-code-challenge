@@ -18,14 +18,20 @@ public class IncomePage extends AbstractPage {
     @FindBy(name = "borrowerIncome")
     private ExtendedWebElement borrowerIncome;
     
+    @FindBy(name = "coBorrowerIncome")
+    private ExtendedWebElement coBorrowerIncome;
+    
     @FindBy(name = "borrowerAdditionalIncome")
     private ExtendedWebElement borrowerAdditionalIncome;
     
     @FindBy(name = "confirmIncome")
     private ExtendedWebElement confirmIncome;
-    				
+  	
     @FindBy(xpath="//*[@id=\"root\"]/div/main/div/div[1]/div[2]/div[1]/div/div/form/div[2]/button")
     private ExtendedWebElement continueButton;
+    
+    @FindBy(xpath="//*[@id=\"root\"]/div/main/div/div[1]/div[2]/div[1]/div/div/form/div[3]/button")
+    private ExtendedWebElement continueCoButton;
      		
     public IncomePage(WebDriver driver) {
         super(driver);
@@ -35,6 +41,11 @@ public class IncomePage extends AbstractPage {
     public void enterBorrowerIncome(String income) {
         assertElementPresent(borrowerIncome);
         borrowerIncome.getElement().sendKeys(income);
+    }
+    
+    public void enterCoBorrowerIncome(String income) {
+        assertElementPresent(coBorrowerIncome);
+        coBorrowerIncome.getElement().sendKeys(income);
     }
 
     public void enterBorrowerAdditionalIncome(String additionalIncome) {
@@ -46,6 +57,12 @@ public class IncomePage extends AbstractPage {
     	assertElementPresent(continueButton);
     	continueButton.click();
     	continueButton.click();
+    }
+    
+    public void clickCoContinue() {
+    	assertElementPresent(continueCoButton);
+    	continueCoButton.click();
+    	continueCoButton.click();
     }
     
 }

@@ -24,8 +24,14 @@ public class ContactPage extends AbstractPage {
     @FindBy(name = "borrowerFirstName")
     private ExtendedWebElement borrowerFirstName;
     
+    @FindBy(name = "coBorrowerFirstName")
+    private ExtendedWebElement coBorrowerFirstName;
+    
     @FindBy(name = "borrowerLastName")
     private ExtendedWebElement borrowerLastName;
+    
+    @FindBy(name = "coBorrowerLastName")
+    private ExtendedWebElement coBorrowerLastName;
     
     @FindBy(name = "borrowerStreet")
     private ExtendedWebElement borrowerStreet;
@@ -41,9 +47,15 @@ public class ContactPage extends AbstractPage {
     
     @FindBy(name = "borrowerDateOfBirth")
     private ExtendedWebElement borrowerDateOfBirth;
-   
+    
+    @FindBy(name = "coBorrowerDateOfBirth")
+    private ExtendedWebElement coBorrowerDateOfBirth;
+                   
     @FindBy(xpath="//*[@id=\'root\']/div/main/div/div[1]/div[2]/div[1]/div/div/form/div[2]/button")
     private ExtendedWebElement continueButton;
+    
+    @FindBy(xpath="//*[@id=\"root\"]/div/main/div/div[1]/div[2]/div[1]/div/div/form/div[3]/button")
+    private ExtendedWebElement continueCoButton;
     		
     public ContactPage(WebDriver driver) {
         super(driver);
@@ -66,10 +78,20 @@ public class ContactPage extends AbstractPage {
         assertElementPresent(borrowerFirstName);
         borrowerFirstName.getElement().sendKeys(firstName);
     }
+   
+   public void enterCoContactFN(String coFirstName) {
+       assertElementPresent(coBorrowerFirstName);
+       coBorrowerFirstName.getElement().sendKeys(coFirstName);
+   }
     
     public void enterContactLN(String lastName) {
         assertElementPresent(borrowerLastName);
         borrowerLastName.getElement().sendKeys(lastName);
+    }
+    
+    public void enterCoContactLN(String coLastName) {
+        assertElementPresent(coBorrowerLastName);
+        coBorrowerLastName.getElement().sendKeys(coLastName);
     }
     
     public void enterContactStreet(String street) {
@@ -97,9 +119,19 @@ public class ContactPage extends AbstractPage {
         borrowerDateOfBirth.getElement().sendKeys(dob);
     }
     
+    public void enterCoContactDoB(String coDob) {
+        assertElementPresent(coBorrowerDateOfBirth);
+        coBorrowerDateOfBirth.getElement().sendKeys(coDob);
+    }
+    
     public void clickContinue() {
     	assertElementPresent(continueButton);
     	continueButton.click();
+    }
+    
+    public void clickCoContinue() {
+    	assertElementPresent(continueCoButton);
+    	continueCoButton.click();
     }
     
 }
