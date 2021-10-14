@@ -1,27 +1,26 @@
-### Getting started
-* Install and configure JDK 11
-* Install and configure [Apache Maven 3.6.0+](http://maven.apache.org/)
-* Download and start the latest [Selenium standalone server](http://www.seleniumhq.org/download/)
-* Download the latest version of [Eclipse](http://www.eclipse.org/downloads/) and install [TestNG plugin](http://testng.org/doc/download.html)
-* [Read Carina documentation](http://zebrunner.github.io/carina)
+### Notes
+I have written these test cases/suites using [Carina](http://zebrunner.github.io/carina) test framework. This framework lays down the necessary structure required to build scalable API, Web, Native Devices, etc. testing.
+This is a non-proprietary framework and is free to use.
+I have extensively used this framework at my previous company where it was integrated with eTAF framework for both API and UI testing.
 
-### Import to Eclipse
-If generation is successfully complete, you would see a new project folder with a name equal to the artifactId attribute specified during generation, so navigate to that folder (where pom.xml is located) and execute the following Maven task:
+### Pre-requisites
+1) Import the project in eclipse (Maven Project)
+2) Java 11 (minimum version required)
+3) TestNG Plugin in Eclipse
+4) Selenium Stand alone required.
+
+### Steps;
 ```
-mvn clean eclipse:eclipse
-```
-By executing this command, Maven should resolve all dependencies, downloading required libraries to your local repository and generating Eclipse classpath. Before importing new project to Eclipse, you should link your IDE to your Maven repository by executing the following task:
-```
-mvn -Dworkspace=<path_to_workspace> eclipse:configure-workspace
-```
-Here you have to specify the absolute path to the Eclipse workspace. After that, restart Eclipse IDE. Now you can import generated projects such as "Existing Java Project" into Eclipse IDE.
-Generate Eclipse workspace using command:
-```
-mvn clean eclipse:eclipse
+mvn clean install
 ```
 
-### Run tests
-```
-mvn clean test -Dsuite=api
-```
+### To Run suites or tests
+1) API Test (/api/brfunnelorch/v2/resume/byLeadSecret)
+Suite level: code-challenge\src\test\resources\testng_suites\api.xml --> Run As TestNG
+OR
+code-challenge\src\test\java\com\upgrade\challenge\BRFunnelOrchAPITest.java --> Run As TestNG
 
+2) Web Tests (Personal Loans flow at https://www.credify.tech/phone/nonDMFunnel)
+code-challenge\src\test\resources\testng_suites\web.xml --> Run As TestNG
+OR
+code-challenge\src\test\java\com\upgrade\challenge\NonDMFunnelTest.java
