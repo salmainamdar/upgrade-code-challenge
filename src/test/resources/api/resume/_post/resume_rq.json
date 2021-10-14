@@ -1,0 +1,4 @@
+{
+	<#if loanAppUuid??>"loanAppUuid": "${loanAppUuid}",</#if>
+	"skipSideEffects": "true"
+}
